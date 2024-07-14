@@ -15,6 +15,6 @@ message Order {
 
 message AddOrderResponse {}
 
-message PayloadWithSingleOrder {
+message AddOrderRequest {
   Order order = 1;
 }

@@ -3,7 +3,7 @@ syntax = "proto3";
 package resource.product.v1;
 
 enum ProductType {
-  PRODUCT_TYPE_UNKNOWN = 0;
+  PRODUCT_TYPE_UNKNOWN_UNSPECIFIED = 0;
   PRODUCT_TYPE_FOOD = 1;
   PRODUCT_TYPE_DRINK = 2;
 }

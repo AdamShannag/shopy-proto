@@ -6,7 +6,7 @@ import "third_party/google/api/annotations.proto";
 import "resource/order/v1/order.proto";
 
 service OrdersService {
-  rpc AddOrder(resource.order.v1.PayloadWithSingleOrder) returns (resource.order.v1.AddOrderResponse) {
+  rpc AddOrder(resource.order.v1.AddOrderRequest) returns (resource.order.v1.AddOrderResponse) {
     option (google.api.http) = {
       post: "/v1/order",
       body: "*"
