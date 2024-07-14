@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package api.orders.v1;
+
+import "third_party/google/api/annotations.proto";
+import "resource/order/v1/order.proto";
+import "resource/common/empty.proto";
+
+service OrdersService {
+  rpc AddOrder(resource.order.v1.PayloadWithSingleOrder) returns (resource.common.Empty) {
+    option (google.api.http) = {
+      post: "/v1/order",
+      body: "*"
+    };
+  }
+}

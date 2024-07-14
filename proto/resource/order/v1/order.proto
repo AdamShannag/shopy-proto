@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package resource.order.v1;
+
+import "third_party/google/type/datetime.proto";
+import "resource/product/v1/product.proto";
+
+message Order {
+  uint64 order_id = 1 [json_name = "order_id"];
+  uint64 customer_id = 2 [json_name = "customer_id"];
+  bool is_active = 3 [json_name = "is_active"];
+  repeated resource.product.v1.Product products = 4;
+  google.type.DateTime order_date = 5 [json_name = "order_date"];
+}
+
+message PayloadWithSingleOrder {
+  Order order = 1;
+}

@@ -1,0 +1,13 @@
+version: v2
+modules:
+  - path: proto
+lint:
+  use:
+    - DEFAULT
+  ignore:
+    - proto/third_party/google/type/datetime.proto
+    - proto/third_party/google/api/annotations.proto
+    - proto/third_party/google/api/http.proto
+breaking:
+  use:
+    - FILE

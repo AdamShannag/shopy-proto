@@ -1,0 +1,25 @@
+name: Generate and Lint buf
+
+on:
+  push:
+    branches:
+      - "*"
+  workflow_dispatch:
+
+jobs:
+  lint-build:
+    name: buf check lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ory/build-buf-action@v0
+        with:
+          bufVersion: v0.31.1
+          bufArgs: check lint --config buf.yaml
+      - uses: ory/build-buf-action@v0
+        with:
+          bufVersion: v0.31.1
+          protocPlugins:
+            go@v1.25.0 go-grpc@v1.0.1
+          bufArgs:
+            generate --config buf.yaml --template buf.gen.yaml

@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package resource.common;
+
+message Empty {}
