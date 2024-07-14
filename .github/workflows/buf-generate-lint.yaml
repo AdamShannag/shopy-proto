@@ -1,17 +1,25 @@
-name: buf-pull-request
-on: push
+name: Generate and Lint buf
+
+on:
+  push:
+    branches:
+      - "*"
+  workflow_dispatch:
+
 jobs:
-  build:
+  lint-build:
+    name: buf check lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: bufbuild/buf-setup-action@v1
-      - uses: bufbuild/buf-lint-action@v1
-
-      - uses: bufbuild/buf-breaking-action@v1
-
+      - uses: actions/checkout@v2
+      - uses: ory/build-buf-action@v0
         with:
-
-          # The 'main' branch of the GitHub repository that defines the module.
-
-          against: "https://github.com/${GITHUB_REPOSITORY}.git#branch=master"
+          bufVersion: v1.34.0
+          bufArgs: check lint --config buf.yaml
+      - uses: ory/build-buf-action@v0
+        with:
+          bufVersion: v1.34.0
+          protocPlugins:
+            go@v1.25.0 go-grpc@v1.0.1
+          bufArgs:
+            generate --config buf.yaml --template buf.gen.yaml
