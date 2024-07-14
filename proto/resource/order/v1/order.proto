@@ -13,6 +13,8 @@ message Order {
   google.type.DateTime order_date = 5 [json_name = "order_date"];
 }
 
+message AddOrderResponse {}
+
 message PayloadWithSingleOrder {
   Order order = 1;
 }
