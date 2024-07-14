@@ -15,7 +15,7 @@ jobs:
       - uses: ory/build-buf-action@v0
         with:
           bufVersion: v1.34.0
-          bufArgs: check lint --config buf.yaml
+          bufArgs: lint --config buf.yaml
       - uses: ory/build-buf-action@v0
         with:
           bufVersion: v1.34.0
